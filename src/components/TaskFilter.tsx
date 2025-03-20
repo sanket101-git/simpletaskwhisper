@@ -33,8 +33,8 @@ const TaskFilter: React.FC<TaskFilterProps> = ({
             onClick={() => onFilterChange(filter.value)}
             className={`px-4 py-2.5 text-sm rounded-md transition-default flex items-center space-x-1.5 ${
               currentFilter === filter.value 
-                ? 'bg-white text-primary shadow-sm' 
-                : 'text-gray-600 hover:text-gray-900'
+                ? 'bg-red-900/70 text-white shadow-sm' 
+                : 'text-gray-400 hover:text-gray-300'
             }`}
           >
             {filter.icon}
@@ -42,8 +42,8 @@ const TaskFilter: React.FC<TaskFilterProps> = ({
             {taskCounts[filter.value] > 0 && (
               <span className={`ml-1 px-1.5 py-0.5 text-xs rounded-full inline-flex items-center justify-center ${
                 currentFilter === filter.value 
-                  ? 'bg-primary/10 text-primary' 
-                  : 'bg-gray-200 text-gray-700'
+                  ? 'bg-red-800/50 text-white' 
+                  : 'bg-gray-800 text-gray-300'
               }`}>
                 {taskCounts[filter.value]}
               </span>

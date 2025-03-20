@@ -31,10 +31,10 @@ const TaskList: React.FC<TaskListProps> = ({
           <img 
             src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=200&h=150&q=80" 
             alt="Empty task list" 
-            className="w-32 h-24 object-cover rounded-lg opacity-50"
+            className="w-32 h-24 object-cover rounded-lg opacity-30"
           />
         </div>
-        <p className="text-gray-500 font-medium">
+        <p className="text-gray-400 font-medium">
           {filter === 'all' 
             ? 'No tasks yet. Add one above!' 
             : filter === 'active' 

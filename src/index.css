@@ -14,7 +14,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 4%;
 
-    --primary: 220 90% 56%;
+    --primary: 0 84% 60%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 240 5% 96%;
@@ -46,7 +46,7 @@
     --popover: 240 10% 4%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 220 90% 56%;
+    --primary: 0 84% 60%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 240 4% 12%;
@@ -73,7 +73,7 @@
   }
 
   body {
-    @apply bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 text-foreground antialiased min-h-screen;
+    @apply bg-gradient-to-br from-black via-gray-900 to-red-900 text-foreground antialiased min-h-screen;
     font-feature-settings: "rlig" 1, "calt" 1;
     background-attachment: fixed;
   }
@@ -106,11 +106,10 @@
   }
 
   .task-card {
-    @apply bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-default p-4;
+    @apply bg-black/50 rounded-lg border border-red-900/30 shadow-sm hover:shadow-md transition-default p-4;
   }
 
   .glass-effect {
-    @apply bg-white/70 backdrop-blur-sm border border-white/50 shadow-lg;
+    @apply bg-black/70 backdrop-blur-sm border border-red-800/20 shadow-lg;
   }
 }
-
