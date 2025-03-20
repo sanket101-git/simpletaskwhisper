@@ -73,8 +73,9 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 text-foreground antialiased min-h-screen;
     font-feature-settings: "rlig" 1, "calt" 1;
+    background-attachment: fixed;
   }
 
   /* Custom styling */
@@ -103,4 +104,13 @@
   .transition-default {
     @apply transition-all duration-200 ease-out;
   }
+
+  .task-card {
+    @apply bg-white rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-default p-4;
+  }
+
+  .glass-effect {
+    @apply bg-white/70 backdrop-blur-sm border border-white/50 shadow-lg;
+  }
 }
+

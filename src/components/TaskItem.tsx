@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Task } from '@/types/task';
-import { CheckIcon, Trash2Icon } from 'lucide-react';
+import { CheckIcon, Trash2Icon, ClockIcon } from 'lucide-react';
 
 interface TaskItemProps {
   task: Task;
@@ -11,29 +11,35 @@ interface TaskItemProps {
 
 const TaskItem: React.FC<TaskItemProps> = ({ task, onToggleComplete, onDelete }) => {
   const priorityColors = {
-    low: 'bg-blue-100 text-blue-800',
-    medium: 'bg-amber-100 text-amber-800',
-    high: 'bg-rose-100 text-rose-800'
+    low: 'bg-blue-100 text-blue-800 border-blue-200',
+    medium: 'bg-amber-100 text-amber-800 border-amber-200',
+    high: 'bg-rose-100 text-rose-800 border-rose-200'
+  };
+
+  const priorityIcons = {
+    low: '🔹',
+    medium: '🔸',
+    high: '🔺'
   };
 
   return (
     <div 
-      className={`group p-4 border rounded-lg bg-white shadow-sm mb-2 animate-slide-in hover:shadow-md transition-default ${
-        task.completed ? 'opacity-75' : ''
+      className={`group task-card ${
+        task.completed ? 'opacity-80 bg-gray-50' : ''
       }`}
     >
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-3 flex-1">
           <button
             onClick={() => onToggleComplete(task.id)}
-            className={`h-5 w-5 rounded-full border flex items-center justify-center transition-default ${
+            className={`h-6 w-6 rounded-full border-2 flex items-center justify-center transition-default ${
               task.completed 
                 ? 'bg-primary border-primary text-white' 
                 : 'border-gray-300 hover:border-primary/50'
             }`}
             aria-label={task.completed ? "Mark as incomplete" : "Mark as complete"}
           >
-            {task.completed && <CheckIcon className="h-3 w-3" />}
+            {task.completed && <CheckIcon className="h-4 w-4" />}
           </button>
           
           <div className="flex-1">
@@ -42,11 +48,12 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, onToggleComplete, onDelete })
             }`}>
               {task.title}
             </p>
-            <div className="flex items-center mt-1 space-x-2">
-              <span className={`text-xs px-2 py-0.5 rounded-full ${priorityColors[task.priority]}`}>
-                {task.priority}
+            <div className="flex items-center mt-1.5 space-x-2">
+              <span className={`text-xs px-2 py-0.5 rounded-full border ${priorityColors[task.priority]}`}>
+                {priorityIcons[task.priority]} {task.priority}
               </span>
-              <span className="text-xs text-gray-500">
+              <span className="text-xs text-gray-500 flex items-center">
+                <ClockIcon className="h-3 w-3 mr-1" />
                 {task.createdAt.toLocaleDateString()}
               </span>
             </div>

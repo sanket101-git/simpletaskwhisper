@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { PlusIcon } from 'lucide-react';
+import { PlusIcon, ArrowDownIcon } from 'lucide-react';
 import { TaskPriority } from '@/types/task';
 
 interface TaskInputProps {
@@ -20,6 +20,12 @@ const TaskInput: React.FC<TaskInputProps> = ({ onAddTask }) => {
     }
   };
 
+  const priorityOptions = [
+    { value: 'low', label: 'Low Priority 🔹' },
+    { value: 'medium', label: 'Medium Priority 🔸' },
+    { value: 'high', label: 'High Priority 🔺' },
+  ];
+
   return (
     <form 
       onSubmit={handleSubmit}
@@ -31,27 +37,32 @@ const TaskInput: React.FC<TaskInputProps> = ({ onAddTask }) => {
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            placeholder="Add a new task..."
-            className="w-full px-4 py-3 bg-white border rounded-lg focus:ring-2 focus:ring-primary/30 transition-default"
+            placeholder="What do you need to do today?"
+            className="w-full px-4 py-3 rounded-lg border-gray-200 shadow-sm focus:ring-2 focus:ring-primary/30 focus:border-primary transition-default"
             autoFocus
           />
         </div>
         
         <div className="flex space-x-2">
-          <select
-            value={priority}
-            onChange={(e) => setPriority(e.target.value as TaskPriority)}
-            className="px-3 py-3 border rounded-lg bg-white text-sm transition-default"
-            aria-label="Task priority"
-          >
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
-          </select>
+          <div className="relative">
+            <select
+              value={priority}
+              onChange={(e) => setPriority(e.target.value as TaskPriority)}
+              className="pl-3 pr-8 py-3 border rounded-lg text-sm transition-default appearance-none"
+              aria-label="Task priority"
+            >
+              {priorityOptions.map(option => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+            <ArrowDownIcon className="h-4 w-4 absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none text-gray-500" />
+          </div>
           
           <button
             type="submit"
-            className="px-4 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-default flex items-center justify-center"
+            className="px-5 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-default flex items-center justify-center"
             aria-label="Add task"
           >
             <PlusIcon className="h-5 w-5" />
